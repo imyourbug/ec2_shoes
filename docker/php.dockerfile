@@ -1,8 +1,8 @@
-FROM php:8.1-fpm-alpine
+FROM php:8-fpm-alpine
 
-WORKDIR /var/www/html/be
+WORKDIR /var/www/html
 
-COPY . /var/www/html/be
+COPY . /var/www/html
 
 # RUN chmod -R 777 .
 RUN chown -R www-data:www-data /var/www

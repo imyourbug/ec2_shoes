@@ -1,13 +1,12 @@
-version: '2'
-
 services:
     nginx:
-        container_name: nginx.aodabong
+        container_name: nginx.shoes
         build:
             context: ./
             dockerfile: docker/nginx.dockerfile
         ports:
-            - '${APP_PORT:-8000}:80'
+            # - '${APP_PORT:-8000}:80'
+            - '8000}:80'
             - '8080:8080'
         volumes:
             - './:/var/www/html:delegated'
@@ -17,17 +16,17 @@ services:
         networks:
             - laravel
     mysql:
-        container_name: mysql.aodabong
+        container_name: mysql.shoes
         image: mysql:5.7
         # restart: unless-stopped
         tty: true
         ports:
             - '${DB_PORT:-3306}:3306'
         environment:
-            MYSQL_DATABASE: aodabong
-            MYSQL_USER: test
-            MYSQL_PASSWORD: test
-            MYSQL_ROOT_PASSWORD: test
+            MYSQL_DATABASE: shoes
+            MYSQL_USER: sail
+            MYSQL_PASSWORD: password
+            MYSQL_ROOT_PASSWORD: password
         networks:
             - laravel
     php:
@@ -37,9 +36,18 @@ services:
             args:
                 - 'UID=${UID:-1000}'
                 - 'GID=${GID:-1000}'
-        container_name: php.aodabong
+        container_name: php.shoes
         volumes:
             - './:/var/www/html:delegated'
+        networks:
+            - laravel
+    fe.shoes:
+        container_name: fe.shoes
+        build:
+        context: ./
+        dockerfile: docker/app.dockerfile
+        volumes:
+            - ./:/var/www/html/fe
         networks:
             - laravel
 networks:
