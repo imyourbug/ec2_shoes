@@ -6,7 +6,7 @@ services:
             dockerfile: docker/nginx.dockerfile
         ports:
             # - '${APP_PORT:-8000}:80'
-            - '8000}:80'
+            - '8000:80'
             - '8080:8080'
         volumes:
             - './:/var/www/html:delegated'
@@ -41,13 +41,13 @@ services:
             - './:/var/www/html:delegated'
         networks:
             - laravel
-    fe.shoes:
+    app:
         container_name: fe.shoes
         build:
-        context: ./
-        dockerfile: docker/app.dockerfile
+            context: ./
+            dockerfile: docker/app.dockerfile
         volumes:
-            - ./:/var/www/html/fe
+            - './:/app:delegated'
         networks:
             - laravel
 networks:
