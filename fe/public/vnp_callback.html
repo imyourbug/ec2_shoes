@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>vnp_callback.html</title>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+  </head>
+
+  <body id="page-top">
+    vnp_callback.html
+    <input id="temp" value="temp" />
+    <script type="text/javascript">
+      $(document).ready(function () {
+        var url = window.location.href;
+        var params = parseParams(url);
+        window.opener.postMessage(params, window.location.origin);
+        window.close();
+      });
+
+      function parseParams(url) {
+        var params = {};
+        var paramStr = url.split("?")[1];
+        if (!paramStr) {
+          return params;
+        }
+        var paramArr = paramStr.split("&");
+        paramArr.forEach(function (param) {
+          var paramParts = param.split("=");
+          var key = decodeURIComponent(paramParts[0]);
+          var value = decodeURIComponent(paramParts[1]);
+          params[key] = value;
+        });
+
+        return params;
+      }
+    </script>
+  </body>
+</html>

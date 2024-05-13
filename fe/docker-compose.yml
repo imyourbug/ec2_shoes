@@ -1,0 +1,11 @@
+version: '2'
+services:
+  fe.aodabong:
+    container_name: fe.aodabong
+    build:
+      context: ./
+      dockerfile: docker/app.dockerfile
+    volumes:
+      - ./:/var/www/html/fe
+    ports:
+      - 8080:8080
