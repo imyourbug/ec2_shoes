@@ -1,17 +1,23 @@
-FROM node:19-alpine3.16
+FROM node:19.5.0-alpine
 
-# Set the working directory
+# RUN npm install -g http-server
+
 WORKDIR /var/www/html/fe
 
-# Copy the rest of the project files
-COPY fe/package.json .
+COPY fe/package*.json ./
 
-COPY fe/* .
+# ENV GENERATE_SOURCEMAP false
 
+# RUN node --max-old-space-size=18000 `which npm` install
 RUN npm install
 
-# Expose port 8080 (informs Docker the container listens on this port)
+COPY fe/. .
+
+# RUN node --max_old_space_size=18000 `which npm` run build
+
+RUN npm run build
+
 EXPOSE 8080
 
-# Start the development server
 CMD [ "npm", "run", "serve" ]
+# CMD [ "http-server", "dist" ]

@@ -7,7 +7,7 @@ services:
         ports:
             # - '${APP_PORT:-8000}:80'
             - '8000:80'
-            - '8080:8080'
+            # - '8080:8080'
         volumes:
             - './:/var/www/html:delegated'
         depends_on:
@@ -48,6 +48,8 @@ services:
             dockerfile: docker/app.dockerfile
         volumes:
             - './:/app:delegated'
+        ports:
+            - '8080:8080'
         networks:
             - laravel
 networks:

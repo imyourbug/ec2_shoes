@@ -32,7 +32,6 @@ const repositories = {
   detail_product: DetailProductRepository,
   client: ClientRepository,
   voucher: VoucherRepository,
-  account: AccountRepository,
   auth: AuthRepository,
   upload: UploadRepository,
   province: ProvinceRepository,
