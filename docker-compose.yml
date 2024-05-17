@@ -5,11 +5,10 @@ services:
             context: ./
             dockerfile: docker/nginx.dockerfile
         ports:
-            # - '${APP_PORT:-8000}:80'
             - '8000:80'
             # - '8080:8080'
-        volumes:
-            - './:/var/www/html:delegated'
+        # volumes:
+        #     - './:/var/www/html:delegated'
         depends_on:
             - php
             - mysql
@@ -38,7 +37,7 @@ services:
                 - 'GID=${GID:-1000}'
         container_name: php.shoes
         volumes:
-            - './:/var/www/html:delegated'
+            - './:/var/www/html/be:delegated'
         networks:
             - laravel
     app:
@@ -47,7 +46,7 @@ services:
             context: ./
             dockerfile: docker/app.dockerfile
         volumes:
-            - './:/app:delegated'
+            - './:/var/www/html/fe:delegated'
         ports:
             - '8080:8080'
         networks:
