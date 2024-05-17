@@ -7,8 +7,8 @@ services:
         ports:
             - '8000:80'
             # - '8080:8080'
-        # volumes:
-        #     - './:/var/www/html:delegated'
+        volumes:
+            - './:/var/www/html:delegated'
         depends_on:
             - php
             - mysql
@@ -29,13 +29,13 @@ services:
         networks:
             - laravel
     php:
+        container_name: php.shoes
         build:
             context: ./
             dockerfile: docker/php.dockerfile
             args:
                 - 'UID=${UID:-1000}'
                 - 'GID=${GID:-1000}'
-        container_name: php.shoes
         volumes:
             - './:/var/www/html/be:delegated'
         networks:
