@@ -1,0 +1,15 @@
+services:
+    app:
+        container_name: fe.shoes
+        build:
+            context: ./
+            dockerfile: docker/app.dockerfile
+        volumes:
+            - './:/var/www/html/fe:delegated'
+        ports:
+            - '8080:8080'
+        networks:
+            - laravel
+networks:
+    laravel:
+        driver: bridge

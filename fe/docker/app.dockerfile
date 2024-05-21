@@ -11,7 +11,7 @@ COPY fe/package*.json .
 # RUN node --max-old-space-size=18000 `which npm` install
 RUN npm install
 
-COPY fe .
+COPY . .
 # 
 
 # RUN node --max_old_space_size=18000 `which npm` run build

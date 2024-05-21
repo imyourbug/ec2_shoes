@@ -2,7 +2,7 @@ FROM php:8-fpm-alpine
 
 WORKDIR /var/www/html/be
 
-COPY be .
+COPY . .
 
 # RUN chmod -R 777 .
 RUN chown -R www-data:www-data /var/www
