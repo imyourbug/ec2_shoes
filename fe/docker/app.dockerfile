@@ -7,7 +7,7 @@ WORKDIR /app
 COPY ./package*.json .
 
 # ENV GENERATE_SOURCEMAP false
-
+RUN npm install -g @vue/cli
 # RUN node --max-old-space-size=18000 `which npm` install
 RUN npm install
 
