@@ -2,7 +2,7 @@ FROM node:19.5.0-alpine
 
 # RUN npm install -g http-server
 
-WORKDIR /var/www/html/fe
+WORKDIR /app
 
 COPY ./package*.json .
 

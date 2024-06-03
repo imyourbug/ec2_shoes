@@ -8,8 +8,7 @@ services:
             - '8000:80'
             # - '8080:8080'
         volumes:
-            - './:/var/www/html/be:delegated'
-            - './:/var/www/html/fe:delegated'
+            - './:/var/www/html:delegated'
         depends_on:
             - php
             - mysql
@@ -38,7 +37,7 @@ services:
                 - 'UID=${UID:-1000}'
                 - 'GID=${GID:-1000}'
         volumes:
-            - './:/var/www/html/be:delegated'
+            - './:/var/www/html:delegated'
         networks:
             - laravel
 networks:

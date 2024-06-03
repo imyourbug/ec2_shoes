@@ -5,7 +5,7 @@ services:
             context: ./
             dockerfile: docker/app.dockerfile
         volumes:
-            - './:/var/www/html/fe:delegated'
+            - './:/app:delegated'
         ports:
             - '8080:8080'
         networks:
