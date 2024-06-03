@@ -1,15 +1,14 @@
 services:
-    app:
-        container_name: fe.shoes
+    vue-app:
         build:
             context: ./
             dockerfile: docker/app.dockerfile
-        volumes:
-            - './:/app:delegated'
+        container_name: fe.shoes
+        restart: always
         ports:
-            - '8080:8080'
+            - "8080:8080"
         networks:
             - laravel
 networks:
-    laravel:
-        driver: bridge
+  laravel:
+    driver: bridge
