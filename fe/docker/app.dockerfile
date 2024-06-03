@@ -4,7 +4,7 @@ FROM node:19.5.0-alpine
 
 WORKDIR /var/www/html/fe
 
-COPY fe/package*.json .
+COPY ./package*.json .
 
 # ENV GENERATE_SOURCEMAP false
 
