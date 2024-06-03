@@ -7,8 +7,9 @@ services:
         ports:
             - '8000:80'
             # - '8080:8080'
-        # volumes:
-        #     - './:/var/www/html:delegated'
+        volumes:
+            - './:/var/www/html/be:delegated'
+            - './:/var/www/html/fe:delegated'
         depends_on:
             - php
             - mysql
